@@ -102,8 +102,71 @@ namespace GeometryHelper
 		bool loadedSuccessfully = tinyobj::LoadObj(&attribs, &shapes, &materials, &err, path.c_str());
 		assert(loadedSuccessfully && "Could not load the OBJ file - did you get the path right?");
 
+		std::vector<RenderData*> modelRenderData;
 
-		return std::vector<RenderData*>();
+		// For each shape
+		for (auto& shape : shapes)
+		{
+			// Vert List/Table: finds indice for each vert, create new obj vertex
+			std::vector<ObjVertex> vertices;
+			vertices.reserve(shape.mesh.num_face_vertices.size() * 3);
+
+			int index = 0;
+			for (auto& face : shape.mesh.num_face_vertices)
+			{
+				for (int i = 0; i < 3; ++i)
+				{
+					tinyobj::index_t idx = shape.mesh.indices[index + i];
+
+					// SETS POSITION
+					ObjVertex v;
+					v.position.x = attribs.vertices[3 * idx.vertex_index + 0];
+					v.position.y = attribs.vertices[3 * idx.vertex_index + 1];
+					v.position.z = attribs.vertices[3 * idx.vertex_index + 2];
+					v.position.w = 1.0f;
+
+					// if exist - SETS NORMALS
+					if (!attribs.normals.empty())
+					{
+						v.normal.x = attribs.normals[3 * idx.normal_index + 0];
+						v.normal.y = attribs.normals[3 * idx.normal_index + 1];
+						v.normal.z = attribs.normals[3 * idx.normal_index + 2];
+					}
+
+					// if exist - SETS UV COORDS
+					if (!attribs.texcoords.empty())
+					{
+						v.uv.s = attribs.texcoords[2 * idx.texcoord_index + 0];
+						v.uv.t = attribs.texcoords[2 * idx.texcoord_index + 1];
+					}
+				}
+				index += face;
+			}
+			// Put into RenderData
+			RenderData* renderData = new RenderData();
+			// !IBO
+			renderData->GenerateBuffers(false);
+			// Pass Vertex Info to GPU
+			renderData->Bind();
+
+			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(ObjVertex), vertices.data(), GL_STATIC_DRAW);
+
+			// Setup Attribuite Points (Position, Normal, UV)
+			glEnableVertexAttribArray(0);
+			glEnableVertexAttribArray(1);
+			glEnableVertexAttribArray(2);
+
+			// Specify what each slot has
+			glVertexAttribPointer(0, 4, GL_FLOAT, false, sizeof(ObjVertex), (char*)offsetof(ObjVertex, position));
+			glVertexAttribPointer(1, 3, GL_FLOAT, false, sizeof(ObjVertex), (char*)offsetof(ObjVertex, normal));
+			glVertexAttribPointer(2, 2, GL_FLOAT, false, sizeof(ObjVertex), (char*)offsetof(ObjVertex, uv));
+
+			// Unbind
+			renderData->Unbind();
+			modelRenderData.push_back(renderData);
+		}
+
+		return modelRenderData;
 	}
 }
 
