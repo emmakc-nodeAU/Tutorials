@@ -9,6 +9,7 @@ RenderData::RenderData()
 	, m_VBO(-1)
 	, m_IBO(-1)
 	, m_numbersofIndices(-1)
+	, m_hasIndexBuffer(true)
 {
 }
 
@@ -31,14 +32,14 @@ RenderData::RenderData(RenderData&& other)
 	m_VBO = other.m_VBO;
 	m_IBO = other.m_IBO;
 	m_numbersofIndices = other.m_numbersofIndices;
-
+	m_hasIndexBuffer = other.m_hasIndexBuffer;
 	other.m_VAO = -1;
 	other.m_VBO = -1;
 	other.m_IBO = -1;
 }
 
 // DEFENSIVE CODING - Assists with Debug / Avoids Heartache
-void RenderData::GenerateBuffers()
+void RenderData::GenerateBuffers(bool generateIndexBuffer)
 {
 	// IF ASSERT FAILS, THIS WILL TELL YOU WHAT HAPPENED
 	assert(m_VAO == -1 && "Buffers have already been created for this object!");
@@ -48,12 +49,14 @@ void RenderData::GenerateBuffers()
 	// BUFFER
 	glGenVertexArrays(1, &m_VAO);
 	glGenBuffers(1, &m_VBO);
-	glGenBuffers(1, &m_IBO);
+	if(generateIndexBuffer) glGenBuffers(1, &m_IBO);
 
 	glBindVertexArray(m_VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IBO);
+	if (generateIndexBuffer) glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IBO);
 	glBindVertexArray(0);
+
+	m_hasIndexBuffer = generateIndexBuffer;
 }
 
 void RenderData::Bind() const
@@ -70,7 +73,15 @@ void RenderData::Unbind() const
 void RenderData::Render() const
 {
 	Bind();
-	glDrawElements(GL_TRIANGLES, m_numbersofIndices,
-		GL_UNSIGNED_INT, 0);
+	// TinyOBJLoader, overrides IBO
+	if (m_hasIndexBuffer)
+	{
+		glDrawElements(GL_TRIANGLES, m_numbersofIndices,
+			GL_UNSIGNED_INT, 0);
+	}
+	else
+	{
+		glDrawArrays(GL_TRIANGLES, 0, m_numbersofIndices);
+	}
 	Unbind();
 }

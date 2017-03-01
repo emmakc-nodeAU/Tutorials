@@ -14,6 +14,8 @@ public:
 	// Operator
 	RenderData& operator=(const RenderData& other) = delete;
 
+	void GenerateBuffers(bool generateIndexBuffer = true);
+
 	void GenerateBuffers();
 
 	void Bind() const;
@@ -41,4 +43,6 @@ private:
 	unsigned int m_IBO;
 
 	unsigned int m_numbersofIndices;
+	// TinyOBJLoader
+	bool m_hasIndexBuffer;
 };
