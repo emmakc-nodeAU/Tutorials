@@ -16,7 +16,7 @@ public:
 
 	void GenerateBuffers(bool generateIndexBuffer = true);
 
-	void GenerateBuffers();
+	//void GenerateBuffers();
 
 	void Bind() const;
 	void Unbind() const;

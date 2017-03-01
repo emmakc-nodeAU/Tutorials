@@ -37,6 +37,8 @@ bool Application3D::startup() {
 	m_gridRenderData = GeometryHelper::CreateGrid(10, 10, 10, 10, glm::vec4(1, 0, 0, 1));
 	m_gridShader = new Shader("./shaders/grid.vert", "./shaders/grid.frag");
 
+	std::vector<RenderData*> loadedModel = GeometryHelper::LoadOBJFromDisk("./models/stanford/bunny.obj");
+
 	return true;
 }
 

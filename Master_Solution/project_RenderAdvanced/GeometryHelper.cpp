@@ -2,6 +2,8 @@
 #include <gl_core_4_4.h>
 #include "RenderData.h"
 #include <glm/glm.hpp>
+#define TINYOBJLOADER_IMPLEMENTATION
+#include <tiny_obj_loader.h>
 
 
 namespace GeometryHelper
@@ -30,7 +32,6 @@ namespace GeometryHelper
 		}
 
 		// INDEX BUFFER
-
 		unsigned int* indices = new unsigned[(rows - 1) * ( cols - 1) * 6];
 		unsigned int index = 0;
 		for (unsigned int r = 0; r < (rows - 1); ++r)
@@ -90,6 +91,19 @@ namespace GeometryHelper
 	RenderData * GeometryHelper::CreateQuad(float width, float height, glm::vec3 facingDirection)
 	{
 		return nullptr;
+	}
+	std::vector<RenderData*> LoadOBJFromDisk(std::string path)
+	{
+		tinyobj::attrib_t attribs;
+		std::vector<tinyobj::shape_t> shapes;
+		std::vector<tinyobj::material_t> materials;
+
+		std::string err;
+		bool loadedSuccessfully = tinyobj::LoadObj(&attribs, &shapes, &materials, &err, path.c_str());
+		assert(loadedSuccessfully && "Could not load the OBJ file - did you get the path right?");
+
+
+		return std::vector<RenderData*>();
 	}
 }
 

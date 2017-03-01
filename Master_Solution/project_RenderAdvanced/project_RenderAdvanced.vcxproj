@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)dependencies\glm;$(SolutionDir)dependencies\glfw;$(SolutionDir)dependencies\stb;$(SolutionDir)bootstrap;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)dependencies\glm;$(SolutionDir)dependencies\glfw;$(SolutionDir)dependencies\stb;$(SolutionDir)bootstrap;$(SolutionDir)dependencies\tinyobjloader;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)temp\bootstrap\$(Configuration);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -79,7 +79,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)dependencies\glm;$(SolutionDir)dependencies\glfw;$(SolutionDir)dependencies\stb;$(SolutionDir)bootstrap;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)dependencies\glm;$(SolutionDir)dependencies\glfw;$(SolutionDir)dependencies\stb;$(SolutionDir)bootstrap;$(SolutionDir)dependencies\tinyobjloader;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)temp\bootstrap\$(Configuration);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
