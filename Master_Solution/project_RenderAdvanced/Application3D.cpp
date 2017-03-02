@@ -1,12 +1,14 @@
-#include "Application3D.h"
-#include "Gizmos.h"
-#include "Input.h"
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include "GeometryHelper.h"
 #include "RenderData.h"
 #include "Shader.h"
 #include <gl_core_4_4.h>
+#include "Camera.h"
+#include "CameraFly.h"
+#include "Application3D.h"
+#include "Gizmos.h"
+#include "Input.h"
 
 using glm::vec3;
 using glm::vec4;
@@ -88,7 +90,7 @@ void Application3D::shutdown()
 
 void Application3D::update(float deltaTime) 
 {
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // Draws in wire form
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // Draws in wire form
 }
 
 	// query time since application started
@@ -170,6 +172,7 @@ void Application3D::draw()
 	assert(loc != -1);
 	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(projView));
 
+	glUseProgram(m_bunnyShader->GetProgramID());
 	loc = glGetUniformLocation(m_bunnyShader->GetProgramID(), "modelMatrix");
 	assert(loc != -1);
 	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(modelMatrix));

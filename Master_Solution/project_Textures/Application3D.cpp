@@ -4,6 +4,7 @@
 #include <gl_core_4_4.h>
 #include <imgui_glfw3.h>
 
+#include "Camera.h"
 #include "CameraFly.h"
 #include "Application3D.h"
 #include "Gizmos.h"

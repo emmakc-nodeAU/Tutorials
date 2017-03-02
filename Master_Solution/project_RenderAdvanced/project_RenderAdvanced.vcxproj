@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)dependencies\glm;$(SolutionDir)dependencies\glfw;$(SolutionDir)dependencies\stb;$(SolutionDir)bootstrap;$(SolutionDir)dependencies\tinyobjloader;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)dependencies\glm;$(SolutionDir)dependencies\glfw\include\;$(SolutionDir)dependencies\stb;$(SolutionDir)bootstrap;$(SolutionDir)dependencies\tinyobjloader;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)temp\bootstrap\$(Configuration);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -79,7 +79,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)dependencies\glm;$(SolutionDir)dependencies\glfw;$(SolutionDir)dependencies\stb;$(SolutionDir)bootstrap;$(SolutionDir)dependencies\tinyobjloader;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)dependencies\glm;$(SolutionDir)dependencies\glfw\include\;$(SolutionDir)dependencies\stb;$(SolutionDir)bootstrap;$(SolutionDir)dependencies\tinyobjloader;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)temp\bootstrap\$(Configuration);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -149,6 +149,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application3D.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraFly.cpp" />
     <ClCompile Include="GeometryHelper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RenderData.cpp" />
@@ -156,6 +158,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application3D.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraFly.h" />
     <ClInclude Include="GeometryHelper.h" />
     <ClInclude Include="RenderData.h" />
     <ClInclude Include="Shader.h" />

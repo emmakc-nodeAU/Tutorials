@@ -1,5 +1,5 @@
 #pragma once
-
+#include <GLFW\glfw3.h>
 #include "Application.h"
 #include <glm/mat4x4.hpp>
 #include <vector>
@@ -54,5 +54,5 @@ protected:
 	unsigned int m_texture;
 
 	// Rendering Textures
-	unsigned int m_program;
+	unsigned int m_programID;
 };

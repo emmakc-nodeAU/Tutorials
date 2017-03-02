@@ -29,12 +29,13 @@ void Shader::MakeShaderProgram(std::string vertexPath, std::string fragPath)
 {
 	// Load shaders from disk
 	unsigned int vertexShader = MakeShader(GL_VERTEX_SHADER, vertexPath);
-	unsigned int framentShader = MakeShader(GL_FRAGMENT_SHADER, fragPath);
-	assert(vertexShader != -1 && framentShader != -1);
+	unsigned int fragmentShader = MakeShader(GL_FRAGMENT_SHADER, fragPath);
+	assert(vertexShader != -1 && fragmentShader != -1);
 
 	// Create shader program, attach required shaders, then link shaders together
 	m_programID = glCreateProgram();
 	glAttachShader(m_programID, vertexShader);
+	glAttachShader(m_programID, fragmentShader);
 	glLinkProgram(m_programID);
 
 	int success = 0;
@@ -57,7 +58,7 @@ void Shader::MakeShaderProgram(std::string vertexPath, std::string fragPath)
 	}
 
 	glDeleteShader(vertexShader);
-	glDeleteShader(framentShader);
+	glDeleteShader(fragmentShader);
 }
 
 unsigned int Shader::MakeShader(unsigned int type, std::string path)
