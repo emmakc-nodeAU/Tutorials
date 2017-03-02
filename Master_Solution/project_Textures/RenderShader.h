@@ -8,7 +8,7 @@
 ////////////////////////////////////////////////////////////
 #pragma once
 
-#include "RenderShader.h"
+//#include "RenderShader.h"
 #include <glm/glm.hpp>
 #include "Application3D.h"
 

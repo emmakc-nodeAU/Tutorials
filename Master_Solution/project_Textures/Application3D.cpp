@@ -62,7 +62,8 @@ void Application3D::update(float deltaTime) {
 	// draw a simple grid with gizmos
 	vec4 white(1);
 	vec4 black(0, 0, 0, 1);
-	for (int i = 0; i < 21; ++i) {
+	for (int i = 0; i < 21; ++i) 
+	{
 		Gizmos::addLine(vec3(-10 + i, 0, 10),
 						vec3(-10 + i, 0, -10),
 						i == 10 ? white : black);

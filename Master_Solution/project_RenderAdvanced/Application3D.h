@@ -23,6 +23,13 @@ public:
 protected:
 	using OBJMesh = std::vector<RenderData*>;
 
+	// Camera as an object
+	Camera* m_camera;
+
+	// Immediate camera
+	//glm::mat4	m_viewMatrix;
+	//glm::mat4	m_projectionMatrix;
+
 	// Render and Shader
 	RenderData* m_gridRenderData;
 	Shader* m_gridShader;
@@ -31,22 +38,18 @@ protected:
 	OBJMesh m_bunny;
 	Shader* m_bunnyShader;
 
-	// BUDDHA
-	OBJMesh m_buddha;
-	Shader* m_buddhaShader;
+	//// BUDDHA
+	//OBJMesh m_buddha;
+	//Shader* m_buddhaShader;
 
-	// DRAGON
-	OBJMesh m_dragon;
-	Shader* m_dragonShader;
+	//// DRAGON
+	//OBJMesh m_dragon;
+	//Shader* m_dragonShader;
 
-	// LUCY
-	OBJMesh m_lucy;
-	Shader* m_lucyShader;
+	//// LUCY
+	//OBJMesh m_lucy;
+	//Shader* m_lucyShader;
 
-	// Camera
-	Camera* m_camera;
-	glm::mat4	m_viewMatrix;
-	glm::mat4	m_projectionMatrix;
 
 	// Textures
 	int imageWidth = 0, imageHeight = 0, imageFormat = 0;

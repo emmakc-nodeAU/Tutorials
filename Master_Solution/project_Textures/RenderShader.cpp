@@ -6,17 +6,18 @@
 //	Class:		Year 2 Programming, with Matt Dodd
 //	
 ////////////////////////////////////////////////////////////
-
 #include "RenderShader.h"
-#include "Gizmos.h"
-#include "Input.h"
+
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
-#include "Application3D.h"
-#include "CameraFly.h"
-#include <imgui_glfw3.h>
 #include <stb_image.h>
 #include <gl_core_4_4.h>
+#include <imgui_glfw3.h>
+
+#include "CameraFly.h"
+#include "Application3D.h"
+#include "Gizmos.h"
+#include "Input.h"
 
 using glm::vec3;
 using glm::vec4;
