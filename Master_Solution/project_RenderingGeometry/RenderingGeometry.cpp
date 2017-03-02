@@ -188,9 +188,7 @@ void RenderingGeometry::setupShader()
 		printf("Error: failed to link shader program!\n");
 		printf("%s\n", infoLog);
 		delete[] infoLog;
-
 	}
-
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 }
@@ -200,7 +198,7 @@ void RenderingGeometry::generateGrid(unsigned int rows, unsigned int cols)
 {
 	// 1. Allocate memory to hold vertex data
 	Vertex* aoVertices = new Vertex[rows * cols];
-	// 2. Populate meory with vertex data
+	// 2. Populate memory with vertex data
 
 	// ROWS
 	for (unsigned int r = 0; r < rows; ++r)
@@ -212,12 +210,6 @@ void RenderingGeometry::generateGrid(unsigned int rows, unsigned int cols)
 			vert.position = glm::vec4((float)c, 0, (float)r, 1.0f);
 			// COLOUR OF GRID / WIREFRAME
 			vert.colour = glm::vec4(0.5f / 255, 0.5f, 0.5f, 1.0f);
-
-			// Create a position
-			//aoVertices[r*cols + c].position = vec4((float)c, 0, (float)r, 1);
-			// Create a colour
-			//vec3 colour = vec3(sinf((c / (float)(cols - 1))*(r / (float)(rows - 1))));
-			//aoVertices[r*cols + c].colour = vec4(colour, 1);
 		}
 	}
 	// 3. Send data to graphics card

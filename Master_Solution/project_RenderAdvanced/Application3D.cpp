@@ -172,6 +172,8 @@ void Application3D::draw()
 	assert(loc != -1);
 	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(projView));
 
+	modelMatrix = glm::mat4(1);
+	modelMatrix[3].x = 5;
 	glUseProgram(m_bunnyShader->GetProgramID());
 	loc = glGetUniformLocation(m_bunnyShader->GetProgramID(), "modelMatrix");
 	assert(loc != -1);
@@ -188,6 +190,8 @@ void Application3D::draw()
 	assert(loc != -1);
 	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(projView));
 
+	modelMatrix = glm::mat4(1);
+	modelMatrix[3].x = -5;
 	loc = glGetUniformLocation(m_buddhaShader->GetProgramID(), "modelMatrix");
 	assert(loc != -1);
 	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(modelMatrix));
