@@ -35,7 +35,7 @@ bool Application3D::startup() {
 	m_projectionMatrix = glm::perspective(glm::pi<float>() * 0.25f,
 											getWindowWidth() / (float)getWindowHeight(),
 											0.1f, 1000.f);
-	 
+	// PASS IN OBJECT - GRID	 
 	m_gridRenderData = GeometryHelper::CreateGrid(10, 10, 10, 10, glm::vec4(1, 0, 0, 1));
 	m_gridShader = new Shader("./shaders/grid.vert", "./shaders/grid.frag");
 
@@ -118,7 +118,7 @@ void Application3D::update(float deltaTime)
 	//// add a transform so that we can see the axis
 	//Gizmos::addTransform(mat4(1));
 
-	//// demonstrate a few shapes
+	// demonstrate a few shapes
 	//Gizmos::addAABBFilled(vec3(0), vec3(1), vec4(0, 0.5f, 1, 0.25f));
 	//Gizmos::addSphere(vec3(5, 0, 5), 1, 8, 8, vec4(1, 0, 0, 0.5f));
 	//Gizmos::addRing(vec3(5, 0, -5), 1, 1.5f, 8, vec4(0, 1, 0, 1));
@@ -135,7 +135,7 @@ void Application3D::update(float deltaTime)
 	//if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 	//	quit();
 
-	// CAMERA FLY VIEW:
+	//// CAMERA FLY VIEW:
 	//m_camera->Update(deltaTime);
 //}
 

@@ -118,8 +118,8 @@ void RenderingGeometry::draw()
 	glUniform1f(timeUniform, getTime());
 
 	// HEIGHT SCALE
-	//unsigned int heightScale = glGetUniformLocation(m_programID, "heightScale");
-	//glUniform1f(heightScale, heightScale());
+	unsigned int heightScale = glGetUniformLocation(m_programID, "heightScale");
+	glUniform1f(heightScale, 0.8f);
 
 	unsigned int projectionViewUniform = glGetUniformLocation(m_programID, "projectionViewWorldMatrix");
 	glUniformMatrix4fv(projectionViewUniform, 1, false, glm::value_ptr(projView));
@@ -140,30 +140,36 @@ void RenderingGeometry::setupShader()
 {
 	const char* vsSource = "#version 410\n \
 							layout(location=0) in vec4 position; \
-							layout(location=1) in vec2 texCoord; \
-							out vec2 vTexCoord; \
+							layout(location=1) in vec4 colour; \
+							out vec4 vColour; \
 							uniform mat4 projectionViewWorldMatrix; \
+							uniform float time; \
+							uniform float heightScale; \
 							void main() \
 								{ \
-								vTexCoord = texCoord; \
+								vColour = colour; \
+								vec4 warpedPos = position; \
+								warpedPos.y = sin(time + position.x)* heightScale; \
+								warpedPos.y += cos(time+ position.z)* heightScale; \
 								gl_Position = projectionViewWorldMatrix * \
-								position; \
+								warpedPos; \
 								}";
 
 	const char* fsSource = "#version 410\n \
-							in vec2 vTexCoord; \
+							in vec4 vColour; \
 							out vec4 fragColor; \
 							void main() \
 								{ \
-								fragColor = texture(diffuse,vTexCoord); \
+								fragColor = vColour; \
 								}";
 
 	int success = GL_FALSE;
 	unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vertexShader, 1, (const char**)&vsSource, 0);
 	glCompileShader(vertexShader);
 
 	unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(vertexShader, 1, (const char**)&fsSource, 0);
+	glShaderSource(fragmentShader, 1, (const char**)&fsSource, 0);
 	glCompileShader(fragmentShader);
 
 	m_programID = glCreateProgram();

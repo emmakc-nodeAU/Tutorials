@@ -46,15 +46,15 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/imgui;$(SolutionDir)dependencies/glm;$(SolutionDir)dependencies/stb;$(SolutionDir)dependencies/GLFW;$(WindowsSDK_IncludePath);$(VC_IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/glm;$(SolutionDir)dependencies/glfw/include/;$(SolutionDir)dependencies/stb;$(SolutionDir)dependencies/imgui;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)temp\bootstrap\$(Configuration);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)temp\$(ProjectName)\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/glfw;$(SolutionDir)dependencies/imgui;$(SolutionDir)dependencies/glm;$(SolutionDir)dependencies/stb;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)temp\bootstrap\$(Configuration);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;$(SolutionDir)dependencies\stb\;$(SolutionDir)dependencies\glfw\</LibraryPath>
+    <IncludePath>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/glm;$(SolutionDir)dependencies/glfw/include/;$(SolutionDir)dependencies/stb;$(SolutionDir)dependencies/imgui;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)temp\bootstrap\$(Configuration);$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -90,11 +90,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\project_Textures\Application3D.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraFly.cpp" />
     <ClCompile Include="RenderingGeometry.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\project_Textures\Application3D.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraFly.h" />
     <ClInclude Include="RenderingGeometry.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
