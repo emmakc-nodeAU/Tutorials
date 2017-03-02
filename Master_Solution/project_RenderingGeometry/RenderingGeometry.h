@@ -53,6 +53,8 @@ protected:
 	void setupShader();
 	// FUNCTION 6. CREATE: GRID COORDS
 	void generateGrid(unsigned int rows, unsigned int cols);
+	// FUNCTION 7. CREATE: OBJECT COORDS
+	//void generateObjectCoords(unsigned int rows, unsigned int cols);
 	
 	// VARIABLES: VIRTUAL CAMERA 
 	// 1. VIEW MATRIX

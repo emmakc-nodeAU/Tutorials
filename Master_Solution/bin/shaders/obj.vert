@@ -10,7 +10,7 @@ out vec4 colour;
 
 void main()
 {
-    colour = normal;
+    colour = vec4(normal, 1.0f);
 	mat4 PVM = projectionViewWorldMatrix * modelMatrix;
 	
 	gl_Position = PVM * position;

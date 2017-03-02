@@ -37,25 +37,59 @@ bool Application3D::startup() {
 	m_gridRenderData = GeometryHelper::CreateGrid(10, 10, 10, 10, glm::vec4(1, 0, 0, 1));
 	m_gridShader = new Shader("./shaders/grid.vert", "./shaders/grid.frag");
 
+	// PASS IN OBJECT - BUNNY
 	m_bunny = GeometryHelper::LoadOBJFromDisk("./models/stanford/bunny.obj");
 	m_bunnyShader = new Shader("./shaders/obj.vert", "./shaders/obj.frag");
+
+	// PASS IN OBJECT - BUDDHA
+	m_buddha = GeometryHelper::LoadOBJFromDisk("./models/stanford/buddha.obj");
+	m_buddhaShader = new Shader("./shaders/obj.vert", "./shaders/obj.frag");
+
+	// PASS IN OBJECT - DRAGON
+	m_dragon = GeometryHelper::LoadOBJFromDisk("./models/stanford/dragon.obj");
+	m_dragonShader = new Shader("./shaders/obj.vert", "./shaders/obj.frag");
+
+	// PASS IN OBJECT - LUCY
+	m_lucy = GeometryHelper::LoadOBJFromDisk("./models/stanford/lucy.obj");
+	m_lucyShader = new Shader("./shaders/obj.vert", "./shaders/obj.frag");
+
 	return true;
 }
 
 void Application3D::shutdown() 
 {
+	// END - BUNNY
 	for (auto& renderData : m_bunny)
 	{
 		delete renderData;
 	}
+	// END - BUDDHA
+	for (auto& renderData : m_buddha)
+	{
+		delete renderData;
+	}
+	// END - DRAGON
+	for (auto& renderData : m_dragon)
+	{
+		delete renderData;
+	}
+	// END - LUCY
+	for (auto& renderData : m_lucy)
+	{
+		delete renderData;
+	}
 
+	// END - GRID
 	delete m_gridRenderData;
 	delete m_gridShader;
 
 	Gizmos::destroy();
 }
 
-void Application3D::update(float deltaTime) {}
+void Application3D::update(float deltaTime) 
+{
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // Draws in wire form
+}
 
 	// query time since application started
 	//float time = getTime();
@@ -116,6 +150,7 @@ void Application3D::draw()
 
 	glm::mat4 projView = m_projectionMatrix * m_viewMatrix;
 
+	// DRAW - GRID
 	glUseProgram(m_gridShader->GetProgramID());
 
 	int loc = glGetUniformLocation(m_gridShader->GetProgramID(), "projectionViewWorldMatrix");
@@ -128,6 +163,67 @@ void Application3D::draw()
 	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(modelMatrix));
 
 	m_gridRenderData->Render();
+
+	// DRAW - BUNNY
+	glUseProgram(m_bunnyShader->GetProgramID());
+	loc = glGetUniformLocation(m_bunnyShader->GetProgramID(), "projectionViewWorldMatrix");
+	assert(loc != -1);
+	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(projView));
+
+	loc = glGetUniformLocation(m_bunnyShader->GetProgramID(), "modelMatrix");
+	assert(loc != -1);
+	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(modelMatrix));
+
+	for (auto& renderData : m_bunny)
+	{
+		renderData->Render();
+	}
+
+	// DRAW - BUDDHA
+	glUseProgram(m_buddhaShader->GetProgramID());
+	loc = glGetUniformLocation(m_buddhaShader->GetProgramID(), "projectionViewWorldMatrix");
+	assert(loc != -1);
+	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(projView));
+
+	loc = glGetUniformLocation(m_buddhaShader->GetProgramID(), "modelMatrix");
+	assert(loc != -1);
+	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(modelMatrix));
+
+	for (auto& renderData : m_buddha)
+	{
+		renderData->Render();
+	}
+
+	// DRAW - DRAGON
+	glUseProgram(m_dragonShader->GetProgramID());
+	loc = glGetUniformLocation(m_dragonShader->GetProgramID(), "projectionViewWorldMatrix");
+	assert(loc != -1);
+	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(projView));
+
+	loc = glGetUniformLocation(m_dragonShader->GetProgramID(), "modelMatrix");
+	assert(loc != -1);
+	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(modelMatrix));
+
+	for (auto& renderData : m_dragon)
+	{
+		renderData->Render();
+	}
+
+	// DRAW - LUCY
+	glUseProgram(m_lucyShader->GetProgramID());
+	loc = glGetUniformLocation(m_lucyShader->GetProgramID(), "projectionViewWorldMatrix");
+	assert(loc != -1);
+	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(projView));
+
+	loc = glGetUniformLocation(m_lucyShader->GetProgramID(), "modelMatrix");
+	assert(loc != -1);
+	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(modelMatrix));
+
+	for (auto& renderData : m_lucy)
+	{
+		renderData->Render();
+	}
+
 
 	// CAMERA: OLD VIEW
 	//Gizmos::draw(m_projectionMatrix * m_viewMatrix);

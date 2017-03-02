@@ -26,8 +26,22 @@ protected:
 	// Render and Shader
 	RenderData* m_gridRenderData;
 	Shader* m_gridShader;
+	
+	// BUNNY
 	OBJMesh m_bunny;
 	Shader* m_bunnyShader;
+
+	// BUDDHA
+	OBJMesh m_buddha;
+	Shader* m_buddhaShader;
+
+	// DRAGON
+	OBJMesh m_dragon;
+	Shader* m_dragonShader;
+
+	// LUCY
+	OBJMesh m_lucy;
+	Shader* m_lucyShader;
 
 	// Camera
 	Camera* m_camera;

@@ -139,6 +139,8 @@ namespace GeometryHelper
 						v.uv.s = attribs.texcoords[2 * idx.texcoord_index + 0];
 						v.uv.t = attribs.texcoords[2 * idx.texcoord_index + 1];
 					}
+
+					vertices.push_back(v);						
 				}
 				index += face;
 			}
