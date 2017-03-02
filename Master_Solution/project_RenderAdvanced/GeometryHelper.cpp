@@ -161,6 +161,8 @@ namespace GeometryHelper
 			glVertexAttribPointer(1, 3, GL_FLOAT, false, sizeof(ObjVertex), (char*)offsetof(ObjVertex, normal));
 			glVertexAttribPointer(2, 2, GL_FLOAT, false, sizeof(ObjVertex), (char*)offsetof(ObjVertex, uv));
 
+			renderData->SetNumberofIndices(shape.mesh.num_face_vertices.size() * 3);
+
 			// Unbind
 			renderData->Unbind();
 			modelRenderData.push_back(renderData);

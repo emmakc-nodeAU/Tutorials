@@ -2,7 +2,7 @@
 
 #include "Application.h"
 #include <glm/mat4x4.hpp>
-
+#include <vector>
 class RenderData;
 class Shader;
 
@@ -21,10 +21,13 @@ public:
 	virtual void draw();
 
 protected:
+	using OBJMesh = std::vector<RenderData*>;
 
 	// Render and Shader
 	RenderData* m_gridRenderData;
 	Shader* m_gridShader;
+	OBJMesh m_bunny;
+	Shader* m_bunnyShader;
 
 	// Camera
 	Camera* m_camera;
