@@ -34,6 +34,10 @@ protected:
 	RenderData* m_gridRenderData;
 	Shader* m_gridShader;
 	
+	// SOUL SPEAR
+	OBJMesh m_soulSpear;
+	Shader* m_soulSpearShader;
+
 	// BUNNY
 	OBJMesh m_bunny;
 	Shader* m_bunnyShader;

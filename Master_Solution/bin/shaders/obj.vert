@@ -8,14 +8,15 @@ layout(location=2) in vec2 uv;
 uniform mat4 projectionViewWorldMatrix;
 uniform mat4 modelMatrix;
 
-out vec4 vNormal;	// Shadows Tutorial
-// out vec4 colour;
+out vec4 colour;
+out vec2 vUV;
 
 void main()
 {
-    vNormal = normal;	// Shadows Tutorial 
-	//colour = vec4(normal, 1.0f);
+    
+	colour = normal;
 	mat4 PVM = projectionViewWorldMatrix * modelMatrix;
+	vec4 diffuseColour = texture(diffuse, vUV
 	
 	gl_Position = PVM * position;
 }

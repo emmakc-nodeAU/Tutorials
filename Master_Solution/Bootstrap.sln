@@ -28,6 +28,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "project_RenderAdvanced", "p
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "project_Shadows", "project_Shadows\project_Shadows.vcxproj", "{50635A5D-D881-480E-9661-DFDEE8C5ECD1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "project_SoulSpear", "project_SoulSpear\project_SoulSpear.vcxproj", "{7528A496-75F2-45C0-8528-0844BB51985B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -88,6 +90,14 @@ Global
 		{50635A5D-D881-480E-9661-DFDEE8C5ECD1}.Release|x64.Build.0 = Release|x64
 		{50635A5D-D881-480E-9661-DFDEE8C5ECD1}.Release|x86.ActiveCfg = Release|Win32
 		{50635A5D-D881-480E-9661-DFDEE8C5ECD1}.Release|x86.Build.0 = Release|Win32
+		{7528A496-75F2-45C0-8528-0844BB51985B}.Debug|x64.ActiveCfg = Debug|x64
+		{7528A496-75F2-45C0-8528-0844BB51985B}.Debug|x64.Build.0 = Debug|x64
+		{7528A496-75F2-45C0-8528-0844BB51985B}.Debug|x86.ActiveCfg = Debug|Win32
+		{7528A496-75F2-45C0-8528-0844BB51985B}.Debug|x86.Build.0 = Debug|Win32
+		{7528A496-75F2-45C0-8528-0844BB51985B}.Release|x64.ActiveCfg = Release|x64
+		{7528A496-75F2-45C0-8528-0844BB51985B}.Release|x64.Build.0 = Release|x64
+		{7528A496-75F2-45C0-8528-0844BB51985B}.Release|x86.ActiveCfg = Release|Win32
+		{7528A496-75F2-45C0-8528-0844BB51985B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
