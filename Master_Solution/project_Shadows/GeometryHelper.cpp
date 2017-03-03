@@ -8,6 +8,7 @@
 
 namespace GeometryHelper
 {
+	//////////////////////////////////////		GRID		//////////////////////////////////////
 	RenderData * GeometryHelper::CreateGrid(unsigned int rows, unsigned int cols, float width, float height, glm::vec4 colour)
 	{
 		// VERTEX ARRAY (See Render Geometry tutorial for similar code)
@@ -87,6 +88,7 @@ namespace GeometryHelper
 
 		return renderData;
 	}
+	//////////////////////////////////////		QUAD		//////////////////////////////////////
 
 	RenderData * GeometryHelper::CreateQuad(float width, float height, glm::vec3 facingDirection)
 	{

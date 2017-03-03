@@ -154,6 +154,7 @@
     <ClCompile Include="GeometryHelper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RenderData.cpp" />
+    <ClCompile Include="RenderTarget.cpp" />
     <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +163,7 @@
     <ClInclude Include="CameraFly.h" />
     <ClInclude Include="GeometryHelper.h" />
     <ClInclude Include="RenderData.h" />
+    <ClInclude Include="RenderTarget.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

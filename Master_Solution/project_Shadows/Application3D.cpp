@@ -4,14 +4,16 @@
 #include <gl_core_4_4.h>
 
 //#include "Camera.h"
-#include "CameraFly.h"
+#include "CameraFly.h"		// CAMERAS AND PROJECTIONS AND KEY INPUT
 #include "Application3D.h"
-#include "Gizmos.h"
+#include "Gizmos.h"			// MATH
 #include "Input.h"
 
-#include "GeometryHelper.h"
-#include "RenderData.h"
-#include "Shader.h"
+#include "GeometryHelper.h"	// RENDERING
+#include "RenderData.h"		// RENDERING
+#include "Shader.h"			// COLOUR AND TEXTURE MAPS
+
+#include "RenderTarget.h"	// SHADOWS
 
 using glm::vec3;
 using glm::vec4;
