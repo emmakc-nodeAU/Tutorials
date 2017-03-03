@@ -19,6 +19,7 @@ protected:
 	unsigned int m_fbo;			//Frame Buffer Object
 	unsigned int m_fboDepth;	//Texture Handle - Depth
 
+	unsigned int m_lightMatrix;
 };
 
 /*

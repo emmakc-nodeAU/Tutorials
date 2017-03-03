@@ -37,7 +37,9 @@ unsigned int RenderTarget::GetShadowMap()
 
 	GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
 	if (status != GL_FRAMEBUFFER_COMPLETE)
+	{
 		printf("Framebuffer Error!\n");
+	};
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
