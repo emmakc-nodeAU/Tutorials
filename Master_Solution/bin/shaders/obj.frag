@@ -1,8 +1,9 @@
 // FRAGMENT SHADER - USE SHADOW
 #version 410
 
-in vec4 vNormal
-//in vec4 colour; 
+in vec4 vNormal;
+in vec4 colour; 
+// in vec2
 
 out vec4 fragColour;
 

@@ -1,6 +1,6 @@
 #include "CameraFly.h"
 #include <gl_core_4_4.h>
-#include <GLFW\glfw3.h>
+#include <../dependencies/glfw/include/GLFW/glfw3.h>
 
 CameraFly::CameraFly(GLFWwindow* window, float speed)
 	: m_speed(speed)
