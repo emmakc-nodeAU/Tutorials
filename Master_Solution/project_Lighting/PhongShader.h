@@ -1,11 +1,11 @@
-////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 //
 //	Name:		Emma Cameron
 //	Date:		3 March 2017
 //	Project:	Week 4: Lighting
 //	Class:		Year 2 Programming, with Matt Dodd
 //	
-////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 #pragma once
 
 #include <glm/glm.hpp>
@@ -72,6 +72,14 @@
 	- // float specTerm = pow(min(0.0f, dot (R,E)), iSpecPower);	// Specular Term
 	- // vec3 Specular = kS * iS * specTerm;						// Specular Colour/Light
 	- // gl_FragColor = vec4(Ambient + Diffuse + Specular, 1);		// Specular Term * Specular Colour
+
+	//////////////////////////////////////////////////////////////////
+
+	1. LOAD MODEL:  Stanford Bunny (Position, Normal)
+	2. LIGHT MODEL
+	-	BIND Model VertexNormal to GPU
+		- Vertex ppty		: vec4 normal
+		- Fragment Shader	: update to fake light shining down
 */
 
 

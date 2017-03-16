@@ -2,22 +2,21 @@
 #version 410
 
 in vec4 vNormal;
-in vec4 colour; 
-// in vec2
 
 out vec4 fragColour;
 
-uniform vec3 lightDir;
-
 void main()
 {
-    float d = max(0, dot(normalize(vNormal.xyz), lightDir));
+    float d = max(0, dot(normalize(vNormal.xyz), vec3(0,1,0)));
 	fragColour = vec4(d,d,d,1);
 }
 
 /*
 Definitions:
-lightDir = holds a vec3
+vNormal = Bunny vertex normal
+
+// BELOW For Shadow tutorial:
+lightDir = holds a vec3 (vec3(0,1,0)
 - Points to Direction of light origin
 - Used by ShadowMap
 */
