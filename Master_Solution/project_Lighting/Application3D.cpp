@@ -9,6 +9,7 @@
 #include "Application3D.h"
 #include "Gizmos.h"
 #include "Input.h"
+#include "PhongShader.h"
 
 using glm::vec3;
 using glm::vec4;

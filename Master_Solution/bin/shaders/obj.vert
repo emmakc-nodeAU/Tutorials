@@ -1,22 +1,20 @@
-// VERTEX SHADER - USE SHADOW
+// VERTEX SHADER
 #version 410
 
-layout(location=0) in vec4 position;
-layout(location=1) in vec4 vNormal;
-//layout(location=2) in vec2 uv;
+layout(location=0) in vec4 Position;
+layout(location=1) in vec4 Normal;
+
+out vec4 vNormal;
+out vec4 vPosition;	// Specular
 
 uniform mat4 projectionViewWorldMatrix;
 uniform mat4 modelMatrix;
 
-//out vec4 colour;
-//out vec2 vUV;
-
 void main()
 {
-    
-	colour = vNormal;
-	mat4 PVM = projectionViewWorldMatrix * modelMatrix;
-	//vec4 diffuseColour = texture(colour, vUV);
+    vNormal = Normal;
+	vPosition = Position;
+	gl_Position = projectionViewWorldMatrix * Position;
 	
-	gl_Position = PVM * position;
+	// mat4 PVM = projectionViewWorldMatrix * modelMatrix;
 }

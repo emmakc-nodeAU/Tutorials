@@ -12,6 +12,66 @@
 #include <GLFW\glfw3.h>
 
 #include "Application3D.h"
+
+
+class Camera;
+
+// 1. CREATE: VERTEX BUFFER
+struct Vertex
+{
+	glm::vec4 position;
+	glm::vec4 colour;
+};
+
+class PhongShader : public Application3D {
+private:
+
+public:
+
+	PhongShader();
+	virtual ~PhongShader();
+
+	// FUNCTION 1. SETUP
+	virtual bool startup();
+	// FUNCTION 2. SHUTDOWN
+	virtual void shutdown();
+	// FUNCTION 3. UPDATE
+	virtual void update(float deltaTime);
+	// FUNCTION 4. DRAW / RENDER
+	virtual void draw();
+
+
+protected:
+	// FUNCTION 5. CREATE: SHADER
+	void setupShader();
+
+	// FUNCTION 6. CREATE: QUAD
+	void generateTexturedQuad();
+
+	// FUNCTION 7. CREATE: BUNNY
+	void generateTexturedBunny();
+
+	// VARIABLES: VIRTUAL CAMERA 
+	// 1. VIEW MATRIX
+	glm::mat4	m_viewMatrix;
+	// 2. PROJECTION MATRIX (orthographic, not perspective)
+	glm::mat4	m_projectionMatrix;
+	// 3. WORLD MATRIX
+	glm::mat4	m_worldMatrix;
+
+	// BUFFER VARIABLES: (Remember to clean these up after)
+	// VARIABLES: VERTEX ARRAY OBJECT, VERTEX BUFFER OBJ, INDEX BUFFER OBJ
+	unsigned int m_VAO;	// Holds vertex position, texture coord data
+	unsigned int m_VBO;
+	unsigned int m_IBO;
+
+	unsigned int m_numberOfIndices; // not used anywhere, couldnt keep up with tut
+
+									// Rendering Shader Texture
+	unsigned int m_programID;
+};
+
+
 /*
 	LIGHTING MODEL: Phong
 	PHONG INFORMATION: Colouring a Pixel

@@ -76,11 +76,11 @@ void RenderingGeometry::update(float deltaTime)
 	////////////////////////////// CAMERA: ROTATING ///////////////////////////////////
 	// Currently Rotating Camera
 
-	m_viewMatrix = glm::lookAt(vec3(
-		glm::sin(time) * 10, 10, 
-		glm::cos(time) * 10),
-		vec3(0), 
-		vec3(0, 1, 0));
+	//m_viewMatrix = glm::lookAt(vec3(
+	//	glm::sin(time) * 10, 10, 
+	//	glm::cos(time) * 10),
+	//	vec3(0), 
+	//	vec3(0, 1, 0));
 
 	// wipe the gizmos clean for this frame
 	Gizmos::clear();
@@ -162,16 +162,16 @@ void RenderingGeometry::setupShader()
 								{ \
 								fragColor = vColour; \
 								}";
-
+	// Step 1. Vertex Shader
 	int success = GL_FALSE;
 	unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertexShader, 1, (const char**)&vsSource, 0);
 	glCompileShader(vertexShader);
-
+	// Step 2. Fragment Shader
 	unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragmentShader, 1, (const char**)&fsSource, 0);
 	glCompileShader(fragmentShader);
-
+	// Step 3. Create Program
 	m_programID = glCreateProgram();
 	glAttachShader(m_programID, vertexShader);
 	glAttachShader(m_programID, fragmentShader);
