@@ -94,12 +94,14 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraFly.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PhongShader.cpp" />
     <ClCompile Include="RenderShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application3D.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraFly.h" />
+    <ClInclude Include="PhongShader.h" />
     <ClInclude Include="RenderShader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
