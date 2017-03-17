@@ -34,6 +34,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project_TexturesAdvanced", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "project_Lighting", "project_Lighting\project_Lighting.vcxproj", "{10128F9D-B45B-48C0-B127-8DD4FEFAFE9A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "project_GUI", "project_GUI\project_GUI.vcxproj", "{8610D411-C023-4A86-ADDA-24CE8B83FB3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -114,6 +116,12 @@ Global
 		{10128F9D-B45B-48C0-B127-8DD4FEFAFE9A}.Release|x64.ActiveCfg = Release|Win32
 		{10128F9D-B45B-48C0-B127-8DD4FEFAFE9A}.Release|x86.ActiveCfg = Release|Win32
 		{10128F9D-B45B-48C0-B127-8DD4FEFAFE9A}.Release|x86.Build.0 = Release|Win32
+		{8610D411-C023-4A86-ADDA-24CE8B83FB3D}.Debug|x64.ActiveCfg = Debug|Win32
+		{8610D411-C023-4A86-ADDA-24CE8B83FB3D}.Debug|x86.ActiveCfg = Debug|Win32
+		{8610D411-C023-4A86-ADDA-24CE8B83FB3D}.Debug|x86.Build.0 = Debug|Win32
+		{8610D411-C023-4A86-ADDA-24CE8B83FB3D}.Release|x64.ActiveCfg = Release|Win32
+		{8610D411-C023-4A86-ADDA-24CE8B83FB3D}.Release|x86.ActiveCfg = Release|Win32
+		{8610D411-C023-4A86-ADDA-24CE8B83FB3D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

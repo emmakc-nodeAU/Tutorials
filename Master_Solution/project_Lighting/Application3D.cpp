@@ -1,3 +1,12 @@
+////////////////////////////////////////////////////////////
+//
+//	Name:		Emma Cameron
+//	Date:		3 March 2017
+//	Project:	Week 4: Lighting
+//	Class:		Year 2 Programming, with Matt Dodd
+//	
+////////////////////////////////////////////////////////////
+
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include <stb_image.h>
