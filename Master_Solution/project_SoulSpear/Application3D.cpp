@@ -49,7 +49,8 @@ bool Application3D::startup() {
 		glm::vec3(0, 1, 0));
 	
 	// PASS IN OBJECT - Soulspear
-	//m_soulSpearShader = new Shader("./shaders/soulspeak_normal.tga");
+	m_soulSpear = GeometryHelper::LoadOBJFromDisk("./textures/soulspear.obj");
+	m_soulSpearShader = new Shader("./shaders/obj.vert", "./shaders/obj.frag");
 	m_soulSpearDiffuse = new Texture("./textures/soulspear_diffuse.tga");
 
 	// PASS IN OBJECT - GRID	 
@@ -57,7 +58,7 @@ bool Application3D::startup() {
 	m_gridShader = new Shader("./shaders/grid.vert", "./shaders/grid.frag");
 
 	// PASS IN OBJECT - BUNNY
-	m_bunny = GeometryHelper::LoadOBJFromDisk("./models/stanford/bunny.obj");
+	m_bunny = GeometryHelper::LoadOBJFromDisk("./models/stanford/Bunny.obj");
 	m_bunnyShader = new Shader("./shaders/obj.vert", "./shaders/obj.frag");
 
 	//// PASS IN OBJECT - BUDDHA
@@ -82,6 +83,11 @@ void Application3D::shutdown()
 	{
 		delete renderData;
 	}
+	// END - SOULSPEAR
+	for (auto& renderData : m_soulSpear)
+	{
+		delete renderData;
+	}
 	//// END - BUDDHA
 	//for (auto& renderData : m_buddha)
 	//{
@@ -102,6 +108,9 @@ void Application3D::shutdown()
 	delete m_gridRenderData;
 	delete m_gridShader;
 	delete m_soulSpearDiffuse;
+	delete m_soulSpearShader;
+	delete m_bunnyShader;
+
 	Gizmos::destroy();
 }
 
@@ -202,7 +211,7 @@ void Application3D::draw()
 
 	loc = glGetUniformLocation(m_soulSpearShader->GetProgramID(), "diffuse");
 	assert(loc != -1);
-	glUniformli(loc, 0);
+	glUniform1i(loc, 0);
 
 	for (auto& renderData : m_soulSpear)
 	{
@@ -215,22 +224,22 @@ void Application3D::draw()
 
 
 	// DRAW - BUNNY
-	//glUseProgram(m_bunnyShader->GetProgramID());
-	//loc = glGetUniformLocation(m_bunnyShader->GetProgramID(), "projectionViewWorldMatrix");
-	//assert(loc != -1);
-	//glUniformMatrix4fv(loc, 1, false, glm::value_ptr(m_camera->GetProjectionView()));
+	glUseProgram(m_bunnyShader->GetProgramID());
+	loc = glGetUniformLocation(m_bunnyShader->GetProgramID(), "projectionViewWorldMatrix");
+	assert(loc != -1);
+	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(m_camera->GetProjectionView()));
 
-	//modelMatrix = glm::mat4(1);
-	//modelMatrix[3].x = 0;
-	//glUseProgram(m_bunnyShader->GetProgramID());
-	//loc = glGetUniformLocation(m_bunnyShader->GetProgramID(), "modelMatrix");
-	//assert(loc != -1);
-	//glUniformMatrix4fv(loc, 1, false, glm::value_ptr(modelMatrix));
+	modelMatrix = glm::mat4(1);
+	modelMatrix[3].x = 0;
+	glUseProgram(m_bunnyShader->GetProgramID());
+	loc = glGetUniformLocation(m_bunnyShader->GetProgramID(), "modelMatrix");
+	assert(loc != -1);
+	glUniformMatrix4fv(loc, 1, false, glm::value_ptr(modelMatrix));
 
-	//for (auto& renderData : m_bunny)
-	//{
-	//	renderData->Render();
-	//}
+	for (auto& renderData : m_bunny)
+	{
+		renderData->Render();
+	}
 
 	//// DRAW - BUDDHA
 	//glUseProgram(m_buddhaShader->GetProgramID());

@@ -3,9 +3,14 @@
 #include "Application.h"
 #include <glm/mat4x4.hpp>
 #include <vector>
+#include <Texture.h>
+
+namespace aie
+{
+	class Texture;
+}
 class RenderData;
 class Shader;
-
 class Camera;
 
 class Application3D : public aie::Application {
@@ -26,10 +31,6 @@ protected:
 	// Camera as an object
 	Camera* m_camera;
 
-	// Immediate camera
-	//glm::mat4	m_viewMatrix;
-	//glm::mat4	m_projectionMatrix;
-
 	// Render and Shader
 	RenderData* m_gridRenderData;
 	Shader* m_gridShader;
@@ -38,18 +39,10 @@ protected:
 	OBJMesh m_bunny;
 	Shader* m_bunnyShader;
 
-	//// BUDDHA
-	//OBJMesh m_buddha;
-	//Shader* m_buddhaShader;
-
-	//// DRAGON
-	//OBJMesh m_dragon;
-	//Shader* m_dragonShader;
-
-	//// LUCY
-	//OBJMesh m_lucy;
-	//Shader* m_lucyShader;
-
+	// SOULSPEAR
+	OBJMesh m_soulSpear;
+	//Shader* m_soulSpearShader;
+	Texture* m_soulSpearDiffuse;
 
 	// Textures
 	int imageWidth = 0, imageHeight = 0, imageFormat = 0;
